@@ -8820,18 +8820,16 @@
         // Update status to Active
       }
     </script>
+  ...
+  <!-- Tvoj postojeći sadržaj -->
 
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("pwabuilder-sw.js")
-      .then(() => console.log("Service Worker registered!"));
-  }
-</script>
-      
-  </body>
-</html>
-
-                    </div>
-    </div>
+  <!-- Registracija Service Workera -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js")
+        .then(() => console.log("Service Worker registered"))
+        .catch(err => console.error("Service Worker failed:", err));
+    }
+  </script>
 </body>
 </html>
-      
