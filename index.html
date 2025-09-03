@@ -8820,6 +8820,13 @@
         // Update status to Active
       }
     </script>
+
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("pwabuilder-sw.js")
+      .then(() => console.log("Service Worker registered!"));
+  }
+</script>
+      
   </body>
 </html>
 
