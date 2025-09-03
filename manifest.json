@@ -1,12 +1,13 @@
 {
   "name": "QRolly",
   "short_name": "QRolly",
-  "description": "Privacy-first attendance system. Every scan. In sync.",
+  "description": "QRolly - Privacy-first attendance system. Every scan. In sync.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4CAF50",
+  "orientation": "portrait",
   "categories": ["business", "productivity", "utilities", "security"],
   "icons": [
     {
