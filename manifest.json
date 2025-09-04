@@ -7,7 +7,8 @@
   "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#4CAF50",
+  // Updated theme color to align with primary brand color used across the app
+  "theme_color": "#2F6FED",
   "orientation": "portrait",
   "categories": ["business", "productivity", "utilities", "security"],
   "launch_handler": {

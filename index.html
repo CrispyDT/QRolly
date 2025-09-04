@@ -8831,5 +8831,357 @@
         .catch(err => console.error("Service Worker failed:", err));
     }
   </script>
+
+  <!-- Unified button and form styles -->
+  <style>
+    /* Unified button styles for new screens */
+    .btn-primary {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: #2F6FED;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      text-align: center;
+      border: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: background 0.2s;
+    }
+    .btn-primary:hover {
+      background: #1E4DBA;
+    }
+    .btn-secondary {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: #E2E8F0;
+      color: #0F172A;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      text-align: center;
+      border: 1px solid #CBD5E1;
+      transition: background 0.2s;
+    }
+    .btn-secondary:hover {
+      background: #F1F5F9;
+    }
+    /* Form styles used in add screens */
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: #0F172A;
+      margin-bottom: 4px;
+    }
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #E2E8F0;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #0F172A;
+      background: #F8FAFC;
+    }
+    .form-input:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: #2F6FED;
+    }
+  </style>
+
+  <!-- Manager - Add Worker screen -->
+  <div class="screen-item">
+    <h3>Manager - Add Worker</h3>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>QRolly - Add Worker</title>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+        .add-worker-phone-frame {
+          width: 375px;
+          min-height: 812px;
+          background: linear-gradient(180deg, #EAF3FF 0%, #F3F8FF 40%, #F8FBF4 75%, #FFF3E8 100%);
+          border-radius: 40px;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          position: relative;
+          box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+          border: 1px solid #e2e8f0;
+          margin: 2rem;
+          display: inline-flex;
+          flex-direction: column;
+        }
+        .page-header {
+          text-align: center;
+          font-family: 'Poppins', sans-serif;
+          font-weight: 600;
+          font-size: 24px;
+          color: #0F172A;
+          margin: 32px 0 24px 0;
+        }
+        .form-container {
+          padding: 0 24px 60px;
+          flex: 1;
+        }
+      </style>
+    </head>
+    <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+      <div class="add-worker-phone-frame">
+        <h2 class="page-header">Add Worker</h2>
+        <div class="form-container">
+          <div class="form-group">
+            <label class="form-label" for="workerName">Full Name</label>
+            <input class="form-input" type="text" id="workerName" placeholder="e.g. John Doe">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="workerRole">Role</label>
+            <select class="form-select" id="workerRole">
+              <option value="">Select role</option>
+              <option value="operator">Operator</option>
+              <option value="manager">Manager</option>
+              <option value="support">Support</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="workerEmail">Email</label>
+            <input class="form-input" type="email" id="workerEmail" placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="workerPhone">Phone</label>
+            <input class="form-input" type="tel" id="workerPhone" placeholder="+381">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="workerStatus">Status</label>
+            <select class="form-select" id="workerStatus">
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+              <option value="suspended">Suspended</option>
+            </select>
+          </div>
+          <div class="flex justify-end space-x-3">
+            <button class="btn-secondary" onclick="history.back()">Cancel</button>
+            <button class="btn-primary" onclick="saveWorker()">Save</button>
+          </div>
+        </div>
+      </div>
+      <script>
+        function saveWorker() {
+          const name = document.getElementById('workerName').value;
+          const role = document.getElementById('workerRole').value;
+          const email = document.getElementById('workerEmail').value;
+          const phone = document.getElementById('workerPhone').value;
+          const status = document.getElementById('workerStatus').value;
+          console.log('Saving worker', {name, role, email, phone, status});
+          alert('Worker saved (stub).');
+        }
+      </script>
+    </body>
+    </html>
+  </div>
+
+  <!-- Manager - Add Client screen -->
+  <div class="screen-item">
+    <h3>Manager - Add Client</h3>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>QRolly - Add Client</title>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+        .add-client-phone-frame {
+          width: 375px;
+          min-height: 812px;
+          background: linear-gradient(180deg, #EAF3FF 0%, #F3F8FF 40%, #F8FBF4 75%, #FFF3E8 100%);
+          border-radius: 40px;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          position: relative;
+          box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+          border: 1px solid #e2e8f0;
+          margin: 2rem;
+          display: inline-flex;
+          flex-direction: column;
+        }
+        .page-header {
+          text-align: center;
+          font-family: 'Poppins', sans-serif;
+          font-weight: 600;
+          font-size: 24px;
+          color: #0F172A;
+          margin: 32px 0 24px 0;
+        }
+        .form-container {
+          padding: 0 24px 60px;
+          flex: 1;
+        }
+      </style>
+    </head>
+    <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+      <div class="add-client-phone-frame">
+        <h2 class="page-header">Add Client</h2>
+        <div class="form-container">
+          <div class="form-group">
+            <label class="form-label" for="clientName">Client Name</label>
+            <input class="form-input" type="text" id="clientName" placeholder="e.g. TechCorp">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contactPerson">Contact Person</label>
+            <input class="form-input" type="text" id="contactPerson" placeholder="e.g. Jane Smith">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="clientEmail">Email</label>
+            <input class="form-input" type="email" id="clientEmail" placeholder="client@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="clientPhone">Phone</label>
+            <input class="form-input" type="tel" id="clientPhone" placeholder="+381">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="clientAddress">Address</label>
+            <input class="form-input" type="text" id="clientAddress" placeholder="Street, City">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="clientNotes">Notes</label>
+            <textarea class="form-input" id="clientNotes" rows="3" placeholder="Optional notes"></textarea>
+          </div>
+          <div class="flex justify-end space-x-3">
+            <button class="btn-secondary" onclick="history.back()">Cancel</button>
+            <button class="btn-primary" onclick="saveClient()">Save</button>
+          </div>
+        </div>
+      </div>
+      <script>
+        function saveClient() {
+          const name = document.getElementById('clientName').value;
+          const contact = document.getElementById('contactPerson').value;
+          const email = document.getElementById('clientEmail').value;
+          const phone = document.getElementById('clientPhone').value;
+          const address = document.getElementById('clientAddress').value;
+          const notes = document.getElementById('clientNotes').value;
+          console.log('Saving client', {name, contact, email, phone, address, notes});
+          alert('Client saved (stub).');
+        }
+      </script>
+    </body>
+    </html>
+  </div>
+
+  <!-- Manager - Add Device screen -->
+  <div class="screen-item">
+    <h3>Manager - Add Device</h3>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>QRolly - Add Device</title>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+        .add-device-phone-frame {
+          width: 375px;
+          min-height: 812px;
+          background: linear-gradient(180deg, #EAF3FF 0%, #F3F8FF 40%, #F8FBF4 75%, #FFF3E8 100%);
+          border-radius: 40px;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          position: relative;
+          box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+          border: 1px solid #e2e8f0;
+          margin: 2rem;
+          display: inline-flex;
+          flex-direction: column;
+        }
+        .page-header {
+          text-align: center;
+          font-family: 'Poppins', sans-serif;
+          font-weight: 600;
+          font-size: 24px;
+          color: #0F172A;
+          margin: 32px 0 24px 0;
+        }
+        .form-container {
+          padding: 0 24px 60px;
+          flex: 1;
+        }
+      </style>
+    </head>
+    <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+      <div class="add-device-phone-frame">
+        <h2 class="page-header">Add Device</h2>
+        <div class="form-container">
+          <div class="form-group">
+            <label class="form-label" for="deviceId">Device ID</label>
+            <input class="form-input" type="text" id="deviceId" placeholder="e.g. DEV-0001">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="deviceModel">Model/Type</label>
+            <input class="form-input" type="text" id="deviceModel" placeholder="Model">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="deviceStatus">Status</label>
+            <select class="form-select" id="deviceStatus">
+              <option value="deployed">Deployed</option>
+              <option value="maintenance">Maintenance</option>
+              <option value="stock">In Stock</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="deviceOperator">Assigned Operator</label>
+            <input class="form-input" type="text" id="deviceOperator" placeholder="Operator ID or Name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="deviceClient">Assigned Client</label>
+            <input class="form-input" type="text" id="deviceClient" placeholder="Client ID or Name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="deviceLocation">Location</label>
+            <input class="form-input" type="text" id="deviceLocation" placeholder="Location description">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="deviceNotes">Notes</label>
+            <textarea class="form-input" id="deviceNotes" rows="3" placeholder="Optional notes"></textarea>
+          </div>
+          <div class="flex justify-end space-x-3">
+            <button class="btn-secondary" onclick="history.back()">Cancel</button>
+            <button class="btn-primary" onclick="saveDevice()">Save</button>
+          </div>
+        </div>
+      </div>
+      <script>
+        function saveDevice() {
+          const id = document.getElementById('deviceId').value;
+          const model = document.getElementById('deviceModel').value;
+          const status = document.getElementById('deviceStatus').value;
+          const operator = document.getElementById('deviceOperator').value;
+          const client = document.getElementById('deviceClient').value;
+          const location = document.getElementById('deviceLocation').value;
+          const notes = document.getElementById('deviceNotes').value;
+          console.log('Saving device', {id, model, status, operator, client, location, notes});
+          alert('Device saved (stub).');
+        }
+      </script>
+    </body>
+    </html>
+  </div>
 </body>
 </html>
